@@ -18,16 +18,10 @@ public class PF extends Contribuinte {
 	@Override
 	public double calcularImposto() {
 		baseDeCalculo = this.rendimentoAnual - (1770 * this.dependentes);
-		aliquota = baseDeCalculo < 25000 ? 0
-				: (baseDeCalculo >= 25000 && baseDeCalculo < 50000 ? 0.15
-						: (baseDeCalculo >= 50000 && baseDeCalculo < 100000 ? 0.2 : 0.275));
-		impostoDevido = baseDeCalculo * aliquota;
-		System.out.println(baseDeCalculo);
-		System.out.println(impostoDevido);
-		System.out.println(aliquota);
+		impostoDevido = baseDeCalculo * this.aliquota();
 		return impostoDevido;
 	}
-	
+
 	@Override
 	public double aliquota() {
 		baseDeCalculo = this.rendimentoAnual - (1770 * this.dependentes);

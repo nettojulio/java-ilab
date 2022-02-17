@@ -14,18 +14,15 @@ public class PJ extends Contribuinte {
 
 	@Override
 	public double calcularImposto() {
-		aliquota = this.faturamento < 100000 ? 0
-				: (this.faturamento >= 100000 && this.faturamento < 250000 ? 0.06
-						: (this.faturamento >= 250000 && this.faturamento < 450000 ? 0.15 : 0.25));
-		impostoDevido = faturamento * aliquota;
+		impostoDevido = faturamento * this.aliquota();
 		return impostoDevido;
 	}
-	
+
 	@Override
 	public double aliquota() {
 		aliquota = this.faturamento < 100000 ? 0
 				: (this.faturamento >= 100000 && this.faturamento < 250000 ? 0.06
 						: (this.faturamento >= 250000 && this.faturamento < 450000 ? 0.15 : 0.25));
-		return 0;
+		return aliquota;
 	}
 }

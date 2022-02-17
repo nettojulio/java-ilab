@@ -15,15 +15,19 @@ public class Contribuinte {
 	public double calcularImposto() {
 		return 0;
 	}
-	
+
 	public double aliquota() {
 		return 0;
 	}
 
+	public String detalhar() {
+		return "Imposto Devido R$ " + String.format("%.2f", calcularImposto()) + "\nAliquota: "
+				+ String.format("%.2f", aliquota() * 100) + "%";
+	}
+
 	@Override
 	public String toString() {
-		return "Contribuinte [numeroCadastral=" + numeroCadastral + ", nome=" + nome + ", endereco=" + endereco
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+		return "Nome do Contribuinte: " + nome + "\nNum Cadastral: " + numeroCadastral + "\nEndereco: " + endereco
+				+ "\n\n" + this.detalhar() + "\n\n\n--------------------------------\n\n";
 	}
 }
