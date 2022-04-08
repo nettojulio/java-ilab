@@ -9,39 +9,43 @@ public class Vitrine {
 
 	public static void main(String[] args) {
 		Scanner keyboard = new Scanner(System.in);
-		int min, max, totalEmEstoque;
+
+		int totalEmEstoque;
 		double valorTotalEmEstoque;
-		min = 0;
-		max = 0;
-		totalEmEstoque = 0;
-		valorTotalEmEstoque = 0.0;
+		Produto maisCaro, maisBarato;
+
 		ArrayList<Produto> estoque = new ArrayList<Produto>();
 
-		
-		for (int x = 1; x <= 25; x++) {
-			estoque.add(new Produto(x, "Produto " + x, x * 100 - estoque.size(), x*estoque.size()));
+		for (int x = 1; x <= 10; x++) {
+			estoque.add(new Produto(x, "Produto " + x, x * 10, 1));
 		}
-		
-		for(int x = 1;x < estoque.size();x++) {
-			if(estoque.get(x).getPreco() < estoque.get(x - 1).getPreco()) {
-				min = x;
+
+		maisCaro = maisBarato = estoque.get(0);
+		totalEmEstoque = 0;
+		valorTotalEmEstoque = 0.0;
+
+		for (Produto p : estoque) {
+			if (p.getPreco() < maisBarato.getPreco()) {
+				maisBarato = p;
 			}
-			
-			if(estoque.get(x).getPreco() > estoque.get(x - 1).getPreco()) {
-				max = x;
+
+			if (p.getPreco() > maisCaro.getPreco()) {
+				maisCaro = p;
 			}
-			
-			totalEmEstoque += estoque.get(x).getQtdEstoque();
-			valorTotalEmEstoque += (estoque.get(x).getQtdEstoque() * estoque.get(x).getPreco());
+
+			// lista.sort(Comparator.comparing(Produto::getPreco));
+
+			totalEmEstoque += p.getQtdEstoque();
+			valorTotalEmEstoque += (p.getQtdEstoque() * p.getPreco());
+			System.out.println(p);
 		}
-		
-		System.out.println(estoque.get(min));
-		System.out.println(estoque.get(max));
+
+		System.out.println();
+		System.out.println(maisBarato);
+		System.out.println(maisCaro);
+		System.out.println();
 		System.out.println(totalEmEstoque);
 		System.out.println(valorTotalEmEstoque);
-		System.out.println(estoque);
-		
-		
 
 		keyboard.close();
 
