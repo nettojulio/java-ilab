@@ -1,0 +1,16 @@
+.btn{
+
+}
+.btn-primary{
+    border-color: chartreuse;
+    background-color: chocolate;
+}
+.btn-primary:hover{
+    background-color: white;
+    color: black;
+
+}
+
+.modal-footer{
+    background-color: yellow;
+}
